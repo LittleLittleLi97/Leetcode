@@ -5,19 +5,33 @@
  var jump = function(nums) {
     let out = 0;
 
-    let st = 0;
     let end = 0;
     let maxPos = 0;
-    while (end < nums.length - 1) {
-        for (let i = st; i <= end; i++) {
-            maxPos = Math.max(maxPos, nums[i] + i);
+    for (let i = 0; i < nums.length - 1; i++) {
+        maxPos = Math.max(maxPos, nums[i] + i);
+        if (i === end) {
+            end = maxPos;
+            out++;
         }
-        st = end;
-        end = maxPos;
-        out++;
     }
     return out;
 };
+// var jump = function(nums) {
+//     let out = 0;
+
+//     let st = 0;
+//     let end = 0;
+//     let maxPos = 0;
+//     while (end < nums.length - 1) {
+//         for (let i = st; i <= end; i++) {
+//             maxPos = Math.max(maxPos, nums[i] + i);
+//         }
+//         st = end;
+//         end = maxPos;
+//         out++;
+//     }
+//     return out;
+// };
 // var jump = function(nums) {
 //     if (nums.length === 1) return 0;
 
