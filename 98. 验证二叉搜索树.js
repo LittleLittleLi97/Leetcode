@@ -25,3 +25,14 @@ var isValidBST = function(root) {
     inOder(root);
     return result;
 };
+
+var isValidBST = function(root) {
+    function isValid(root, minValue, maxValue) {
+        const valueFlag = minValue < root.val && root.val < maxValue;
+        const leftFlag = root.left ? isValid(root.left, minValue, root.val) : true;
+        const rightFlag = root.right ? isValid(root.right, root.val, maxValue) : true;
+
+        return valueFlag && leftFlag & rightFlag;
+    }
+    return isValid(root, -Infinity, Infinity)
+};
