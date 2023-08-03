@@ -10,6 +10,36 @@
  * @param {TreeNode} root
  * @return {number[][]}
  */
+
+// 不存储层级
+var levelOrder = function(root) {
+    if (!root) return [];
+
+    const out = [];
+
+    const queue = [];
+    queue.push(root);
+    while (queue.length > 0) {
+
+        const len = queue.length;
+        const level = [];
+        for (let i = 0; i < len; i++) {
+            const node = queue[0];
+            queue.shift();
+
+            node.left && queue.push(node.left);
+            node.right && queue.push(node.right);
+
+            level.push(node.val);
+        }
+
+        out.push(level);
+    }
+
+    return out;
+};
+
+// 存储层级
 var levelOrder = function(root) {
     if (!root) return [];
     const q = [];

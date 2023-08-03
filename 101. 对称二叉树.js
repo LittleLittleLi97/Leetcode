@@ -10,6 +10,17 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
+
+// 简化版
+var isSymmetric = function(root) {
+    function DFS(p, q) {
+        if (!p && !q) return true;
+        if ((!p && q) || (p && !q)) return false;
+        return p.val === q.val && DFS(p.left, q.right) && DFS(p.right, q.left);
+    }
+    return DFS(root.left, root.right);
+};
+
 var isSymmetric = function(root) {
     if (!root) return true;
     let result = true;
